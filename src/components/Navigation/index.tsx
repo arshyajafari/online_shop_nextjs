@@ -1,64 +1,101 @@
 // react hooks
-import { Fragment, FC } from "react";
+import { FC, useState } from "react";
 
 // next packages
+import Link from "next/link";
 import Image from "next/image";
 
 // styled components
-import { Container } from "./Nav.style";
+import { StyledNumberItemsCart } from "./Nav.style";
 
 export const Navigation: FC = () => {
+  // profile menu state
+  const [profileIsOpen, setProfileIsOpen] = useState(false);
+
+  // profile state handler method
+  const profileMenuHandler = () => setProfileIsOpen((state) => !state);
+
   return (
-    <Fragment>
-      <Container>
-        <div className="flex justify-center items-center">
-          {/* <img
-            src={user}
-            alt="user logo"
-            className="w-14 h-14 flex justify-center items-center border-solid border-2 border-gray-300 rounded-full m-0 p-0 object-contain hover:border-gray-400 cursor-pointer"
-          /> */}
-          <Image
-            src=""
-            alt=""
-            className="w-14 h-14 flex justify-center items-center border-solid border-2 border-gray-300 rounded-full m-0 p-0 object-contain hover:border-gray-400 cursor-pointer"
-          />
-          <span className="text-base pl-3 cursor-pointer">firstname</span>
-        </div>
-        <div className="flex justify-center items-center">
-          {/* <img
-            src={logo}
-            alt="site logo"
-            className="w-64 h-24 flex justify-center items-center border-solid border-2 border-gray-300 rounded-lg m-0 p-0 object-cover hover:border-gray-400 cursor-pointer"
-            onClick={() => navigate("/")}
-          /> */}
-          <Image
-            src=""
-            alt=""
-            className="w-64 h-24 flex justify-center items-center border-solid border-2 border-gray-300 rounded-lg m-0 p-0 object-cover hover:border-gray-400 cursor-pointer"
-          />
-        </div>
-        <div>
-          <button type="button" className="text-emerald-700 relative">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-8 h-8"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+    <nav className="bg-white border-gray-200 dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto px-2 lg:px-8 sm:px-6">
+        <div className="h-16 flex items-center justify-between relative">
+          <div className="flex items-center justify-center">
+            <Link href="/" className="flex flex-shrink-0 items-center">
+              <Image
+                src="https://flowbite.com/docs/images/logo.svg"
+                alt=""
+                width={32}
+                height={32}
+                className="mr-0 sm:mr-3"
               />
-            </svg>
-            <span className="w-6 h-6 bg-red-800 text-gray-100 text-sm rounded-full absolute bottom-5 left-5">
-              0
-            </span>
-          </button>
+              <span className="text-2xl font-semibold whitespace-nowrap self-center dark:text-white hidden sm:block">
+                website title
+              </span>
+            </Link>
+          </div>
+
+          <div className="flex items-center absolute sm:static inset-y-0 sm:inset-auto right-0 sm:ml-6 pr-2 sm:pr-0">
+            <Link
+              href=""
+              className="bg-gray-800 text-gray-400 rounded-full relative p-1 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+                />
+              </svg>
+              <StyledNumberItemsCart>0</StyledNumberItemsCart>
+            </Link>
+
+            <div className="relative ml-3">
+              <button
+                className="bg-gray-800 text-sm flex rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                onClick={profileMenuHandler}
+                onBlur={() => setProfileIsOpen(false)}
+              >
+                <Image
+                  src="https://flowbite.com/docs/images/logo.svg"
+                  alt=""
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                />
+              </button>
+              {profileIsOpen ? (
+                <ul className="w-36 bg-white absolute right-0 rounded-md mt-2 py-1 z-10 origin-top-right shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <li>
+                    <Link
+                      href="#"
+                      className="text-gray-700 text-sm block px-4 py-2"
+                    >
+                      Your Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#"
+                      className="text-gray-700 text-sm block px-4 py-2 "
+                    >
+                      Cart
+                    </Link>
+                  </li>
+                </ul>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
         </div>
-      </Container>
-    </Fragment>
+      </div>
+    </nav>
   );
 };
