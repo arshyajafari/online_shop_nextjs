@@ -1,42 +1,62 @@
 // react hook
-import React, { FC } from "react";
+import React, { Fragment, FC } from "react";
 
 // next packages
 import Image from "next/image";
 
 // styled components
-import { Container } from "./ProductCard.style";
+import {
+  StyledShadow,
+  StyledProductInfo,
+  StyledAction,
+} from "./ProductCard.style";
 
 export const ProductCard: FC = () => {
+  const products = [
+    {
+      id: 1,
+      src: "https://flowbite.com/docs/images/logo.svg",
+      title: "Basic Tee",
+      description: "Front of men's Basic Tee in black.",
+      price: "$35",
+    },
+  ];
+
   return (
-    <Container>
-      <div className="w-full h-full border-solid border-2 border-sky-200 rounded-xl shadow-md">
-        <Image
-          src=""
-          alt=""
-          className="w-3/4 h-64 object-contain mx-auto p-4"
-        />
-        <div className="p-6 md:px-3">
-          <h5 className="text-neutral-700 dark:text-neutral-600 lg:text-xl md:text:base font-medium mb-2">
-            title
-          </h5>
-          <p className="text-gray-500 dark:text-gray-400 lg:text-base md:text-sm text-justify mb-4">
-            description
-          </p>
-          <div className="flex justify-between items-center pt-4">
-            <span className="text-neutral-600 dark:text-neutral-600 text-lg font-medium leading-tight">
-              $price
-            </span>
-            <button
-              type="button"
-              className="w-1/2 bg-sky-600 text-white lg:text-sm sm:text-xs font-medium uppercase leading-normal rounded-md px-6 md:px-2 py-2.5 hover:bg-sky-700"
-              // onClick={() => increaseCartQuantity(items.id)}
-            >
-              Add to Cart
-            </button>
-          </div>
+    <Fragment>
+      <div className="max-w-3xl lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 xl:gap-x-8 mt-6">
+          {products.map((item) => (
+            <div key={item.id}>
+              <div className="w-full lg:h-auto bg-gray-200 rounded-md relative aspect-h-1 lg:aspect-none aspect-w-1 overflow-hidden hover:opacity-75">
+                <Image
+                  src={item.src}
+                  alt={item.title}
+                  width={0}
+                  height={0}
+                  objectFit="contain"
+                  objectPosition="center"
+                  layout="responsive"
+                />
+
+                <StyledShadow>
+                  <div></div>
+                  <span>{item.price}</span>
+                </StyledShadow>
+              </div>
+
+              <StyledProductInfo>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </StyledProductInfo>
+
+              <StyledAction>
+                <button type="button">Add to bag</button>
+              </StyledAction>
+            </div>
+          ))}
         </div>
       </div>
-    </Container>
+    </Fragment>
   );
 };
