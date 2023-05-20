@@ -78,3 +78,48 @@ export const StyledNumberItems = styled.div`
     margin-top: 1rem;
   }
 `;
+
+export const StyledOrderTotalBox = styled.div`
+  max-width: 35rem;
+  margin: 2.5rem auto 0px;
+
+  & div {
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+
+    & div {
+      display: flow-root;
+
+      & dl {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        margin: -1rem 0px;
+
+        & div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+
+          & dt {
+            color: rgb(17 24 39 / var(--tw-text-opacity));
+            font-size: 1.125rem;
+            font-weight: 500;
+            line-height: 1.5rem;
+            --tw-text-opacity: 1;
+          }
+
+          & dd {
+            color: rgb(17 24 39 / var(--tw-text-opacity));
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.5rem;
+            margin: 0;
+            --tw-text-opacity: 1;
+          }
+        }
+      }
+    }
+  }
+`;

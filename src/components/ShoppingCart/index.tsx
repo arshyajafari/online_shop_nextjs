@@ -11,6 +11,7 @@ import {
   StyledItemImage,
   StyledShoppingDistricts,
   StyledNumberItems,
+  StyledOrderTotalBox,
 } from "./Shopping.style";
 
 export const ShoppingCart: FC = () => {
@@ -92,6 +93,19 @@ export const ShoppingCart: FC = () => {
           </StyledShoppingDistricts>
         </StyledItemList>
       </StyledItemsList>
+
+      <StyledOrderTotalBox>
+        <div>
+          <div>
+            <dl>
+              <div>
+                <dt>Order total</dt>
+                <dd>total</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </StyledOrderTotalBox>
     </Fragment>
   );
 };
