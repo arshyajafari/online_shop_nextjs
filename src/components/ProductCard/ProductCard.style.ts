@@ -47,6 +47,10 @@ export const StyledProductInfo = styled.div`
     font-size: 1.125rem;
     font-weight: 500;
     line-height: 1.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     --tw-text-opacity: 1;
   }
 
