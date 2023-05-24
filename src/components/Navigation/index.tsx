@@ -8,12 +8,19 @@ import Image from "next/image";
 // styled components
 import { StyledNumberItemsCart } from "./Nav.style";
 
+// import images
+import logo from "assets/img/logo.svg";
+import profile from "assets/img/profile.jpg";
+
 export const Navigation: FC = () => {
   // profile menu state
   const [profileIsOpen, setProfileIsOpen] = useState(false);
 
   // profile state handler method
   const profileMenuHandler = () => setProfileIsOpen((state) => !state);
+
+  // number of items on shopping cart
+  let cartQuantity = 1;
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -22,14 +29,14 @@ export const Navigation: FC = () => {
           <div className="flex items-center justify-center">
             <Link href="/" className="flex flex-shrink-0 items-center">
               <Image
-                src="https://flowbite.com/docs/images/logo.svg"
-                alt=""
+                src={logo}
+                alt="web logo"
                 width={32}
                 height={32}
                 className="mr-0 sm:mr-3"
               />
               <span className="text-2xl font-semibold whitespace-nowrap self-center dark:text-white hidden sm:block">
-                website title
+                ONLINE SHOP
               </span>
             </Link>
           </div>
@@ -53,7 +60,11 @@ export const Navigation: FC = () => {
                   d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
                 />
               </svg>
-              <StyledNumberItemsCart>0</StyledNumberItemsCart>
+              {cartQuantity && cartQuantity > 0 ? (
+                <StyledNumberItemsCart>{cartQuantity}</StyledNumberItemsCart>
+              ) : (
+                ""
+              )}
             </Link>
 
             <div className="relative ml-3">
@@ -63,8 +74,8 @@ export const Navigation: FC = () => {
                 onBlur={() => setProfileIsOpen(false)}
               >
                 <Image
-                  src="https://flowbite.com/docs/images/logo.svg"
-                  alt=""
+                  src={profile}
+                  alt="user image"
                   width={32}
                   height={32}
                   className="rounded-full"
