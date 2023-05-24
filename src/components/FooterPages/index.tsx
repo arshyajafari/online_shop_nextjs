@@ -5,6 +5,9 @@ import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+// import image
+import logo from "assets/img/logo.svg";
+
 export const FooterPages: FC = () => {
   return (
     <div className="bg-white dark:bg-gray-900">
@@ -13,14 +16,14 @@ export const FooterPages: FC = () => {
           <div className="mb-6 md:mb-0">
             <Link href="/" className="flex items-center">
               <Image
-                src="https://flowbite.com/docs/images/logo.svg"
-                alt="FlowBite Logo"
+                src={logo}
+                alt="web Logo"
                 width={60}
                 height={60}
                 className="mr-3"
               />
               <span className="text-2xl font-semibold self-center whitespace-nowrap dark:text-white">
-                website title
+                ONLINE SHOP
               </span>
             </Link>
           </div>
