@@ -6,16 +6,8 @@ import { Navigation } from "components/Navigation";
 import { ProductCard } from "components/ProductCard";
 import { FooterPages } from "components/FooterPages";
 
-// product type
-export type ProductItemType = {
-  id: number;
-  category: string;
-  image: string;
-  title: string;
-  description: string;
-  price: number;
-  amount: number;
-};
+// import types
+import { ProductsTypeProps } from "constant";
 
 export const ProductsPage = () => {
   // products state

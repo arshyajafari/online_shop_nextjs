@@ -5,11 +5,7 @@ import React, { Fragment, FC } from "react";
 import Image from "next/image";
 
 // import types
-import { ProductItemType } from "pages/products";
-
-type Props = {
-  items: ProductItemType;
-};
+import { ProductItemsTypeProps } from "constant";
 
 // styled components
 import {
@@ -18,7 +14,7 @@ import {
   StyledAction,
 } from "./ProductCard.style";
 
-export const ProductCard: FC<Props> = ({ items }) => {
+export const ProductCard: FC<ProductItemsTypeProps> = ({ items }) => {
   return (
     <Fragment>
       <div className="w-full h-full group">
