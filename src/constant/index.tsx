@@ -23,6 +23,6 @@ export type UserInfoTypeProps = {
 
 // modal type
 export type ModalTypeProps = {
-  show: any;
+  show: boolean;
   onClose: () => void;
 };

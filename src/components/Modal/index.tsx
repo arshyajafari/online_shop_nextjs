@@ -1,5 +1,5 @@
 // react hook
-import { FC, Fragment, useCallback, useEffect, useState } from "react";
+import { FC, Fragment, useEffect, useState } from "react";
 
 // next package
 import Image from "next/image";
@@ -10,9 +10,6 @@ import axios from "axios";
 
 // import types
 import { UserInfoTypeProps, ModalTypeProps } from "constant";
-
-// styled components
-import { Backdrop } from "./Modal.style";
 
 // import image
 import profile from "assets/img/profile.jpg";
@@ -38,7 +35,14 @@ export const ProfileModal: FC<ModalTypeProps> = ({ show, onClose }) => {
 
   return (
     <Fragment>
-      <Backdrop isShown={show} onClick={onClose}>
+      <div
+        className={`w-full h-full bg-black/50 fixed inset-0 transition ease-in-out duration-300 z-50 ${
+          show
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+        onClick={onClose}
+      >
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-xl shadow m-auto">
           <div className="w-full inline-flex items-center justify-end">
             <button className="mt-2 mr-3 hover:text-red-500" onClick={onClose}>
@@ -137,7 +141,7 @@ export const ProfileModal: FC<ModalTypeProps> = ({ show, onClose }) => {
             </div>
           </div>
         </div>
-      </Backdrop>
+      </div>
     </Fragment>
   );
 };
