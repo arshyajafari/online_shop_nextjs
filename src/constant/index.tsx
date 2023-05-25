@@ -13,3 +13,16 @@ export type ProductsTypeProps = {
 export type ProductItemsTypeProps = {
   items: ProductsTypeProps;
 };
+
+// user information type
+export type UserInfoTypeProps = {
+  name: { firstname: string; lastname: string };
+  email: string;
+  address: { city: string; street: string; number: number; zipcode: string };
+};
+
+// modal type
+export type ModalTypeProps = {
+  show: boolean;
+  onClose: () => void;
+};
