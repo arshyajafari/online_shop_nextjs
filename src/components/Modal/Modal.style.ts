@@ -1,6 +1,6 @@
 import { styled, css } from "styled-components";
 
-const containerCss = ({ isShown }: boolean) => {
+const containerCss = (isShown: any) => {
   if (isShown) {
     return css`
       opacity: 1;

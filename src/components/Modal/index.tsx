@@ -1,12 +1,12 @@
 // react hook
-import { FC, Fragment, useState } from "react";
-
-// react dom package
-import { createPortal } from "react-dom";
+import { FC, Fragment, useCallback, useEffect, useState } from "react";
 
 // next package
 import Image from "next/image";
 import Link from "next/link";
+
+// import axios
+import axios from "axios";
 
 // import types
 import { UserInfoTypeProps, ModalTypeProps } from "constant";
@@ -19,18 +19,23 @@ import profile from "assets/img/profile.jpg";
 
 export const ProfileModal: FC<ModalTypeProps> = ({ show, onClose }) => {
   // user information state
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState<any>();
 
-  // // get user data by id request method
-  // const getUserDataById = useCallback(
-  //   async (): Promise<void> =>
-  //     await (await fetch("https://fakestoreapi.com/users/1")).json().then(res => setUserInfo(res)),
-  //   []
-  // );
+  // get user data by id request method
+  const getUserDataById = async () => {
+    try {
+      const { data } = await axios.get<UserInfoTypeProps>(
+        "https://fakestoreapi.com/users/1"
+      );
 
-  // console.log(userInfo);
+      setUserInfo(data);
+    } catch (error) {}
+  };
 
-  // onClick={(e) => e.stopPropagation()}
+  useEffect(() => {
+    getUserDataById();
+  }, []);
+
   return (
     <Fragment>
       <Backdrop isShown={show} onClick={onClose}>
@@ -80,10 +85,10 @@ export const ProfileModal: FC<ModalTypeProps> = ({ show, onClose }) => {
                 />
               </svg>
 
-              {/* <span className="mx-1">{userInfo?.email}</span> */}
+              <span className="mx-1">{userInfo?.email}</span>
             </span>
 
-            <span className="text-gray-500 text-sm inline-flex items-center justify-center">
+            <span className="text-gray-800 text-sm inline-flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -104,7 +109,7 @@ export const ProfileModal: FC<ModalTypeProps> = ({ show, onClose }) => {
                 />
               </svg>
 
-              {/* <span className="mx-1">{users.address}</span> */}
+              <span className="mx-1">{`${userInfo?.address.number}, ${userInfo?.address.street}, ${userInfo?.address.city} - ${userInfo?.address.zipcode}`}</span>
             </span>
 
             <div className="flex mt-2 md:mt-3 space-x-3">
