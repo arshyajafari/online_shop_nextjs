@@ -81,10 +81,10 @@ export const ProductsPage = () => {
         <LoadingCM />
       ) : (
         <Fragment>
-          <div className="mt-6">
-            <form className="mx-4">
-              <div className="flex">
-                <div className="w-2/5 relative mr-3">
+          <div className="max-w-full md:max-w-7xl mt-6 mx-auto px-4 sm:px-6 lg:px-8">
+            <form className="mx-0 md:mx-3">
+              <div className="flex flex-col md:flex-row">
+                <div className="w-full md:w-2/5 relative mr-3 mb-2 md:mb-0">
                   <input
                     type="search"
                     className="w-full bg-gray-300 text-gray-700 text-base block border-l-gray-50 border border-gray-300 rounded-lg p-2.5 placeholder-gray-500"
@@ -93,7 +93,7 @@ export const ProductsPage = () => {
                   />
                 </div>
                 <select
-                  className="w-1/5 bg-gray-300 text-gray-700 text-base border border-gray-300 rounded-lg block p-2.5 cursor-pointer"
+                  className="w-full md:w-1/5 bg-gray-300 text-gray-700 text-base border border-gray-300 rounded-lg block p-2.5 cursor-pointer"
                   defaultValue={selectedCategory.name}
                   onChange={(e) =>
                     setSelectedCategory({
@@ -111,7 +111,7 @@ export const ProductsPage = () => {
               </div>
             </form>
           </div>
-          <div className="max-w-3xl lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 ">
+          <div className="max-w-3xl lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 xl:gap-x-8">
               {products
                 ?.filter((item: any) => {

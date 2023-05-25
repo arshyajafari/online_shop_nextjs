@@ -78,7 +78,7 @@ export const ShoppingCart: FC = () => {
                 </button>
               </div>
 
-              <button className="text-red-600 dark:text-red-500 font-medium flex justify-center items-center hover:underline">
+              <button className="text-red-600 font-medium flex justify-center items-center hover:underline">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

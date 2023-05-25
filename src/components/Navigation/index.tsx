@@ -22,7 +22,7 @@ export const Navigation: FC = () => {
 
   return (
     <Fragment>
-      <nav className="bg-white border-gray-200 dark:bg-gray-900">
+      <nav className="bg-gray-900 border-gray-200">
         <div className="max-w-7xl mx-auto px-2 lg:px-8 sm:px-6">
           <div className="h-16 flex items-center justify-between relative">
             <div className="flex items-center justify-center">
@@ -34,7 +34,7 @@ export const Navigation: FC = () => {
                   height={32}
                   className="mr-0 sm:mr-3"
                 />
-                <span className="text-2xl font-semibold whitespace-nowrap self-center dark:text-white hidden sm:block">
+                <span className="text-white text-2xl font-semibold whitespace-nowrap self-center hidden sm:block">
                   ONLINE SHOP
                 </span>
               </Link>

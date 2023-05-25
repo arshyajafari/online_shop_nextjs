@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 export const StyledLoadingBox = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(to right, #2566e0, #1f5bca, #1951b7);
+  background: linear-gradient(to right, #0e4ac9, #103991, #0a2663);
   display: flex;
   flex-direction: column;
   align-items: center;

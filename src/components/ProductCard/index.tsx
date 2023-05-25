@@ -18,7 +18,7 @@ export const ProductCard: FC<ProductItemsTypeProps> = ({ items }) => {
   return (
     <Fragment>
       <div className="w-full h-full group">
-        <div className="w-full lg:h-64 bg-white aspect-w-1 aspect-h-1 lg:aspect-none rounded-md relative overflow-hidden group-hover:opacity-75">
+        <div className="w-full h-96 sm:h-80 lg:h-64 bg-white aspect-w-1 aspect-h-1 lg:aspect-none rounded-md relative overflow-hidden group-hover:opacity-75">
           <Image
             src={items.image}
             alt={items.title}
