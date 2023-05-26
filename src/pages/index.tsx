@@ -1,10 +1,16 @@
-// import Image from 'next/image'
-// import { Inter } from 'next/font/google'
+// import redux package
+import { Provider } from "react-redux";
 
+// import store file
+import { shoppingCartStore } from "store";
+
+// import main file
 import ProductsPage from "./products";
 
-// const inter = Inter({ subsets: ['latin'] })
-
 export default function Home() {
-  return <ProductsPage />;
+  return (
+    <Provider store={shoppingCartStore}>
+      <ProductsPage />
+    </Provider>
+  );
 }
