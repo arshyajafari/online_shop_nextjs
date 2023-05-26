@@ -5,10 +5,12 @@ import { FC, Fragment, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+// components
+import { ProfileModal } from "components/Modal";
+
 // import images
 import logo from "assets/img/logo.svg";
 import profile from "assets/img/profile.jpg";
-import { ProfileModal } from "components/Modal";
 
 export const Navigation: FC = () => {
   // show and hide modal state
@@ -42,7 +44,7 @@ export const Navigation: FC = () => {
 
             <div className="flex items-center absolute sm:static inset-y-0 sm:inset-auto right-0 sm:ml-6 pr-2 sm:pr-0">
               <Link
-                href=""
+                href="/cart"
                 className="bg-gray-800 text-gray-400 rounded-full relative p-1 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
               >
                 <svg

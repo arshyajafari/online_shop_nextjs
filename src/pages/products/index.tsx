@@ -12,9 +12,8 @@ import axios from "axios";
 
 // import types
 import { ProductsTypeProps } from "constant";
-import { ProfileModal } from "components/Modal";
 
-export const ProductsPage = () => {
+const ProductsPage = () => {
   // products state
   const [products, setProducts] = useState<any>([]);
 
@@ -143,3 +142,5 @@ export const ProductsPage = () => {
     </Fragment>
   );
 };
+
+export default ProductsPage;
