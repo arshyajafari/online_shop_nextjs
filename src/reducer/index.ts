@@ -31,10 +31,12 @@ const shoppingCartSlice = createSlice({
         });
       }
     },
+    removeItemFromCart: (state, action: PayloadAction<number | string>) =>
+      state.filter((item: any) => item.id !== action.payload),
   },
 });
 
-export const { increaseCartItems, decreaseCartItems } =
+export const { increaseCartItems, decreaseCartItems, removeItemFromCart } =
   shoppingCartSlice.actions;
 
 export default shoppingCartSlice.reducer;
