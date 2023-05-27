@@ -5,12 +5,21 @@ const shoppingCartSlice = createSlice({
   name: "cart",
   initialState: [] as any,
   reducers: {
-    increaseCartQuantity: (state, action: PayloadAction<ProductsTypeProps>) => {
-      return [action.payload, ...state];
+    increaseCartItems: (state, action: PayloadAction<ProductsTypeProps>) => {
+      const isItemInCart = state.find(
+        (item: any) => item.id === action.payload.id
+      );
+      if (isItemInCart)
+        return state.map((item: any) => {
+          if (item.id === action.payload.id)
+            return { ...action.payload, amount: item.amount + 1 };
+          else return item;
+        });
+      state.push({ ...action.payload, amount: 1 });
     },
   },
 });
 
-export const { increaseCartQuantity } = shoppingCartSlice.actions;
+export const { increaseCartItems } = shoppingCartSlice.actions;
 
 export default shoppingCartSlice.reducer;
