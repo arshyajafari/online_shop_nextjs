@@ -5,7 +5,7 @@ import React, { Fragment, FC } from "react";
 import Image from "next/image";
 
 // import types
-import { ProductItemsTypeProps } from "constant";
+import { ProductItemsTypeProps } from "type";
 
 // styled components
 import {

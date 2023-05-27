@@ -9,7 +9,7 @@ import Link from "next/link";
 import axios from "axios";
 
 // import types
-import { UserInfoTypeProps, ModalTypeProps } from "constant";
+import { UserInfoTypeProps, ModalTypeProps } from "type";
 
 // import image
 import profile from "assets/img/profile.jpg";

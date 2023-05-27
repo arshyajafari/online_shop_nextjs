@@ -11,7 +11,7 @@ import { FooterPages } from "components/FooterPages";
 import axios from "axios";
 
 // import types
-import { ProductsTypeProps } from "constant";
+import { ProductsTypeProps } from "type";
 
 const ProductsPage = () => {
   // products state

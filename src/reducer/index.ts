@@ -2,7 +2,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // import type
-import { ProductsTypeProps } from "constant";
+import { ProductsTypeProps } from "type";
 
 const shoppingCartSlice = createSlice({
   name: "cart",
