@@ -1,10 +1,14 @@
+// import reactjs toolkit package
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+// import type
 import { ProductsTypeProps } from "constant";
 
 const shoppingCartSlice = createSlice({
   name: "cart",
   initialState: [] as any,
   reducers: {
+    // add item to cart and increase cart quantity
     increaseCartItems: (state, action: PayloadAction<ProductsTypeProps>) => {
       const isItemInCart = state.find(
         (item: any) => item.id === action.payload.id
@@ -17,6 +21,7 @@ const shoppingCartSlice = createSlice({
         });
       state.push({ ...action.payload, amount: 1 });
     },
+    // remove item from cart and decrease cart quantity
     decreaseCartItems: (state, action: PayloadAction<number | string>) => {
       const itemIndex = state.findIndex(
         (item: any) => item.id === action.payload
@@ -31,12 +36,20 @@ const shoppingCartSlice = createSlice({
         });
       }
     },
+    // remove item from cart
     removeItemFromCart: (state, action: PayloadAction<number | string>) =>
       state.filter((item: any) => item.id !== action.payload),
+    // cart quantity
+    cartQuantity: (state) =>
+      state.reduce((qty: number, item: any) => qty + item.amount, 0),
   },
 });
 
-export const { increaseCartItems, decreaseCartItems, removeItemFromCart } =
-  shoppingCartSlice.actions;
+export const {
+  increaseCartItems,
+  decreaseCartItems,
+  removeItemFromCart,
+  cartQuantity,
+} = shoppingCartSlice.actions;
 
 export default shoppingCartSlice.reducer;
