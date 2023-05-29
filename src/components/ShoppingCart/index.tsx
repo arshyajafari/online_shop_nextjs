@@ -1,16 +1,40 @@
 // react hooks
 import { Fragment, FC } from "react";
 
+// import redux package
+import { useDispatch, useSelector } from "react-redux";
+
 // next packages
 import Image from "next/image";
 
-export const ShoppingCart: FC = () => {
-  const items: any = {
-    image: "https://flowbite.com/docs/images/logo.svg",
-    title: "flow",
-    price: 2.2,
-    amount: 5,
-  };
+// import reducer methods
+import {
+  decreaseCartItems,
+  getTotalPrice,
+  increaseCartItems,
+  removeItemFromCart,
+} from "reducer";
+
+// import types
+import { ProductItemsTypeProps } from "type";
+
+export const ShoppingCart: FC<ProductItemsTypeProps> = ({ items }) => {
+  // get total price state
+  const totalPrice = useSelector(getTotalPrice);
+
+  // use dispatch for select methods
+  const dispatch = useDispatch();
+
+  // increase cart items
+  const increaseItems = (items: any) => dispatch(increaseCartItems(items));
+
+  // decrease cart items and remove from cart
+  const decreaseItems = (id: number | string) =>
+    dispatch(decreaseCartItems(id));
+
+  // remove items from cart
+  const removeFromCart = (id: number | string) =>
+    dispatch(removeItemFromCart(id));
 
   return (
     <Fragment>
@@ -28,13 +52,17 @@ export const ShoppingCart: FC = () => {
 
           <div className="w-full flex flex-col justify-between ml-0 sm:ml-6 py-4 mx-0 ">
             <div className="flex justify-between">
-              <h4 className="text-lg font-medium leading-5 m-0">
+              <h4 className="w-1/2 lg:w-full sm:w-11/12 text-base lg:text-lg font-medium leading-5 m-0 line-clamp-2">
                 {items.title}
               </h4>
-              <p className="text-gray-900 text-sm font-medium ml-4">
-                $ {items.price}
-              </p>
-              <p className="text-gray-900 text-sm font-medium ml-4">$ total</p>
+              <div className="w-1/2 flex justify-between items-end flex-col sm:flex-row">
+                <p className="text-gray-900 text-sm font-medium ml-4">
+                  $ {items.price}
+                </p>
+                <p className="text-gray-900 text-sm font-medium ml-4">
+                  $ {totalPrice.toFixed(1)}
+                </p>
+              </div>
             </div>
 
             <div className="flex justify-between mt-4 sm:mt-0">
@@ -42,6 +70,7 @@ export const ShoppingCart: FC = () => {
                 <button
                   type="button"
                   className="bg-gray-400 text-black text-sm font-medium inline-flex items-center border border-gray-400 rounded-full p-1 outline-none hover:bg-gray-300"
+                  onClick={() => decreaseItems(items.id)}
                 >
                   <svg
                     className="w-4 h-4"
@@ -64,6 +93,7 @@ export const ShoppingCart: FC = () => {
                 <button
                   type="button"
                   className="bg-gray-400 text-black text-sm font-medium inline-flex items-center border border-gray-400 rounded-full p-1 outline-none hover:bg-gray-300"
+                  onClick={() => increaseItems(items)}
                 >
                   <svg
                     className="w-4 h-4"
@@ -77,7 +107,10 @@ export const ShoppingCart: FC = () => {
                 </button>
               </div>
 
-              <button className="text-red-600 font-medium flex justify-center items-center hover:underline">
+              <button
+                className="text-red-600 font-medium flex justify-center items-center hover:underline"
+                onClick={() => removeFromCart(items.id)}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
