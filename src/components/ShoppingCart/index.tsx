@@ -1,45 +1,43 @@
 // react hooks
-import { Fragment, FC, useState } from "react";
+import { Fragment, FC } from "react";
 
 // next packages
 import Image from "next/image";
 
-// styled components
-import {
-  StyledItemsList,
-  StyledItemList,
-  StyledItemImage,
-  StyledShoppingDistricts,
-  StyledNumberItems,
-  StyledOrderTotalBox,
-} from "./Shopping.style";
-
 export const ShoppingCart: FC = () => {
-  let checkedCode = "";
-  const [discountValue, setDiscountValue] = useState("");
-
-  const discountCodeHandler = () => {};
+  const items: any = {
+    image: "https://flowbite.com/docs/images/logo.svg",
+    title: "flow",
+    price: 2.2,
+    amount: 5,
+  };
 
   return (
     <Fragment>
-      <StyledItemsList>
-        <StyledItemList>
-          <StyledItemImage>
+      <ul className="max-w-4xl border-y border-gray-200 list-none my-12 mx-auto py-0 sm:py-8 px-0">
+        <li className="flex flex-col sm:flex-row py-6 px-4">
+          <div className="m-auto sm:m-0">
             <Image
-              src="https://flowbite.com/docs/images/logo.svg"
-              alt=""
+              src={items.image}
+              alt={items.title}
               width={180}
               height={100}
+              className="bg-gray-200 rounded-md"
             />
-          </StyledItemImage>
+          </div>
 
-          <StyledShoppingDistricts>
-            <div>
-              <h4>title</h4>
-              <p>price</p>
+          <div className="w-full flex flex-col justify-between ml-0 sm:ml-6 py-4 mx-0 ">
+            <div className="flex justify-between">
+              <h4 className="text-lg font-medium leading-5 m-0">
+                {items.title}
+              </h4>
+              <p className="text-gray-900 text-sm font-medium ml-4">
+                $ {items.price}
+              </p>
+              <p className="text-gray-900 text-sm font-medium ml-4">$ total</p>
             </div>
 
-            <StyledNumberItems>
+            <div className="flex justify-between mt-4 sm:mt-0">
               <div className="flex justify-center items-center space-x-3">
                 <button
                   type="button"
@@ -60,6 +58,7 @@ export const ShoppingCart: FC = () => {
                     type="text"
                     className="w-12 bg-gray-50 text-gray-900 text-sm text-center border border-gray-300 rounded-lg py-1 outline-none"
                     disabled
+                    value={items.amount > 0 ? items.amount : 0}
                   />
                 </div>
                 <button
@@ -94,64 +93,10 @@ export const ShoppingCart: FC = () => {
                   />
                 </svg>
               </button>
-            </StyledNumberItems>
-          </StyledShoppingDistricts>
-        </StyledItemList>
-      </StyledItemsList>
-
-      <StyledOrderTotalBox>
-        <div>
-          <div>
-            <dl>
-              <div>
-                <dt>Order total</dt>
-                <dd>total</dd>
-              </div>
-            </dl>
+            </div>
           </div>
-        </div>
-      </StyledOrderTotalBox>
-
-      <div className="w-1/4 my-4 mx-auto">
-        <input
-          type="text"
-          id={checkedCode === "true" ? "success" : "error"}
-          placeholder="Discount code"
-          className={
-            checkedCode === ""
-              ? "w-full text-gray-900 text-sm block border border-gray-500 rounded-lg p-2.5 outline-none placeholder-gray-700"
-              : checkedCode === "true"
-              ? "w-full text-green-900 text-sm block border border-green-500 rounded-lg p-2.5 outline-none placeholder-green-700 focus:border-green-500 focus:ring-green-500"
-              : "w-full text-red-900 text-sm block border border-red-500 rounded-lg p-2.5 outline-none placeholder-red-700 focus:border-red-500 focus:ring-red-500"
-          }
-          onChange={(e) => setDiscountValue(e.target.value)}
-        />
-        <p
-          className={
-            checkedCode === ""
-              ? "text-gray-600 text-sm mt-2"
-              : checkedCode === "true"
-              ? "text-green-600 text-sm mt-2"
-              : "text-red-600 text-sm mt-2"
-          }
-        >
-          {checkedCode === "" ? (
-            ""
-          ) : checkedCode === "true" ? (
-            <span className="font-medium">Well done!</span>
-          ) : (
-            <span className="font-medium">
-              Unfortunately, the discount code is wrong!
-            </span>
-          )}
-        </p>
-        <button
-          className="w-full bg-sky-600 text-white lg:text-sm sm:text-xs font-medium uppercase leading-normal rounded-md my-5 px-6 md:px-2 py-2.5 hover:bg-sky-700"
-          onClick={discountCodeHandler}
-        >
-          Check code
-        </button>
-      </div>
+        </li>
+      </ul>
     </Fragment>
   );
 };
