@@ -1,6 +1,9 @@
 // react hooks
 import { FC, Fragment, useState, useRef, FormEvent } from "react";
 
+// import next package
+import Head from "next/head";
+
 // import get all products in cart from reducer
 import { getAllItemsInShoppingCart, getTotalPrice } from "reducer";
 
@@ -56,6 +59,12 @@ const ShoppingCartPage: FC = () => {
 
   return (
     <Fragment>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Cart</title>
+      </Head>
+
       <Navigation />
 
       <div className="h-screen my-12">
