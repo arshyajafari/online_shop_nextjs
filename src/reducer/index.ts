@@ -42,25 +42,28 @@ const shoppingCartSlice = createSlice({
     // remove item from cart
     removeItemFromCart: (state, action: PayloadAction<number | string>) =>
       state.filter((item: any) => item.id !== action.payload),
-    // cart quantity
-    cartQuantity: (state) =>
-      state.reduce((qty: number, item: any) => qty + item.amount, 0),
   },
 });
 
-export const {
-  increaseCartItems,
-  decreaseCartItems,
-  removeItemFromCart,
-  cartQuantity,
-} = shoppingCartSlice.actions;
+// reducer methods
+export const { increaseCartItems, decreaseCartItems, removeItemFromCart } =
+  shoppingCartSlice.actions;
 
+// get products in shopping cart
 export const getAllItemsInShoppingCart = (state: RootStateType) =>
   state.shoppingCartSlice;
 
+// get total price
 export const getTotalPrice = (state: RootStateType) =>
   state.shoppingCartSlice.reduce(
     (acc: number, next: any) => (acc += next.amount * next.price),
+    0
+  );
+
+// quantity products in shopping cart
+export const quantityProductsInShoppingCart = (state: RootStateType) =>
+  state.shoppingCartSlice.reduce(
+    (qty: number, item: any) => qty + item.amount,
     0
   );
 
