@@ -2,7 +2,7 @@
 import { Fragment, FC } from "react";
 
 // import redux package
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 // next packages
 import Image from "next/image";
@@ -10,7 +10,6 @@ import Image from "next/image";
 // import reducer methods
 import {
   decreaseCartItems,
-  getTotalPrice,
   increaseCartItems,
   removeItemFromCart,
 } from "reducer";
@@ -19,9 +18,6 @@ import {
 import { ProductItemsTypeProps } from "type";
 
 export const ShoppingCart: FC<ProductItemsTypeProps> = ({ items }) => {
-  // get total price state
-  const totalPrice = useSelector(getTotalPrice);
-
   // use dispatch for select methods
   const dispatch = useDispatch();
 
@@ -38,7 +34,7 @@ export const ShoppingCart: FC<ProductItemsTypeProps> = ({ items }) => {
 
   return (
     <Fragment>
-      <ul className="max-w-4xl border-y border-gray-200 list-none my-12 mx-auto py-0 sm:py-8 px-0">
+      <ul className="max-w-4xl border-b border-gray-200 list-none mx-auto py-0 sm:py-8 px-0">
         <li className="flex flex-col sm:flex-row py-6 px-4">
           <div className="m-auto sm:m-0">
             <Image
@@ -57,10 +53,10 @@ export const ShoppingCart: FC<ProductItemsTypeProps> = ({ items }) => {
               </h4>
               <div className="w-1/2 flex justify-between items-end flex-col sm:flex-row">
                 <p className="text-gray-900 text-sm font-medium ml-4">
-                  $ {items.price}
+                  $ {items.price.toFixed(2)}
                 </p>
                 <p className="text-gray-900 text-sm font-medium ml-4">
-                  $ {totalPrice.toFixed(1)}
+                  $ {(items.amount * items.price).toFixed(2)}
                 </p>
               </div>
             </div>

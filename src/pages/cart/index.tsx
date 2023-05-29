@@ -26,7 +26,7 @@ const ShoppingCartPage: FC = () => {
     <Fragment>
       <Navigation />
 
-      <div className="h-screen">
+      <div className="h-screen my-12">
         {products.map((item: any) => (
           <div key={item.id}>
             <ShoppingCart items={item} />
@@ -45,7 +45,7 @@ const ShoppingCartPage: FC = () => {
                       Order total
                     </dt>
                     <dd className="text-gray-900 text-base font-medium m-0">
-                      $ {totalPrice.toFixed(1)}
+                      $ {totalPrice.toFixed(2)}
                     </dd>
                   </div>
                 </dl>
