@@ -5,6 +5,12 @@ import { FC, Fragment, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+// import redux package
+import { useSelector } from "react-redux";
+
+// import quantity products in cart
+import { quantityProductsInShoppingCart } from "reducer";
+
 // components
 import { ProfileModal } from "components/Modal";
 
@@ -19,8 +25,8 @@ export const Navigation: FC = () => {
   // show and hide function handler
   const modalDisplayHandler = () => setShowModal((state) => !state);
 
-  // number of items on shopping cart: for test
-  let cartQuantity = 1;
+  // number of items on shopping cart
+  const cartQuantity = useSelector(quantityProductsInShoppingCart);
 
   return (
     <Fragment>
@@ -61,7 +67,7 @@ export const Navigation: FC = () => {
                     d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
                   />
                 </svg>
-                {cartQuantity && cartQuantity > 0 ? (
+                {cartQuantity ? (
                   <span className="w-5 h-5 bg-red-500 text-white text-xs font-bold leading-4 rounded-full inline-flex items-center justify-center absolute -top-2.5 -left-2.5 m-0">
                     {cartQuantity}
                   </span>
