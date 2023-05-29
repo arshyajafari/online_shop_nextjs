@@ -1,11 +1,17 @@
 // react hook
 import React, { Fragment, FC } from "react";
 
+// import redux package
+import { useDispatch } from "react-redux";
+
 // next packages
 import Image from "next/image";
 
 // import types
 import { ProductItemsTypeProps } from "type";
+
+// import increase cart items method from reducer
+import { increaseCartItems } from "reducer";
 
 // styled components
 import {
@@ -15,6 +21,12 @@ import {
 } from "./ProductCard.style";
 
 export const ProductCard: FC<ProductItemsTypeProps> = ({ items }) => {
+  // use dispatch for get increase method
+  const dispatch = useDispatch();
+
+  // add to cart handler
+  const addItemToCart = (items: any) => dispatch(increaseCartItems(items));
+
   return (
     <Fragment>
       <div className="w-full h-full group">
@@ -39,7 +51,9 @@ export const ProductCard: FC<ProductItemsTypeProps> = ({ items }) => {
         </StyledProductInfo>
 
         <StyledAction>
-          <button type="button">Add to bag</button>
+          <button type="button" onClick={() => addItemToCart(items)}>
+            Add to bag
+          </button>
         </StyledAction>
       </div>
     </Fragment>
