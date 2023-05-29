@@ -1,8 +1,11 @@
-// import reactjs toolkit package
+// import redux toolkit package
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // import type
 import { ProductsTypeProps } from "type";
+
+// import state type from store
+import { RootStateType } from "store";
 
 const shoppingCartSlice = createSlice({
   name: "cart",
@@ -51,5 +54,14 @@ export const {
   removeItemFromCart,
   cartQuantity,
 } = shoppingCartSlice.actions;
+
+export const getAllItemsInShoppingCart = (state: RootStateType) =>
+  state.shoppingCartSlice;
+
+export const getTotalPrice = (state: RootStateType) =>
+  state.shoppingCartSlice.reduce(
+    (acc: number, next: any) => (acc += next.amount * next.price),
+    0
+  );
 
 export default shoppingCartSlice.reducer;
