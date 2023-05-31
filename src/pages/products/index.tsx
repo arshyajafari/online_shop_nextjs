@@ -90,7 +90,7 @@ const ProductsPage = () => {
         <LoadingCM />
       ) : (
         <Fragment>
-          <div className="max-w-full md:max-w-7xl mt-6 mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl lg:max-w-7xl xl:max-w-full mt-6 mx-auto px-4 sm:px-6 lg:px-8 xl:px-24">
             <form className="mx-0 md:mx-3">
               <div className="flex flex-col md:flex-row">
                 <div className="w-full md:w-2/5 relative mr-3 mb-2 md:mb-0">
@@ -120,8 +120,8 @@ const ProductsPage = () => {
               </div>
             </form>
           </div>
-          <div className="max-w-3xl lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 xl:gap-x-8">
+          <div className="max-w-3xl lg:max-w-7xl xl:max-w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-24 py-16 sm:py-24 pb-28">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-10 xl:gap-x-8 mb-32">
               {products
                 ?.filter((item: any) => {
                   if (searchValue === "") return item;

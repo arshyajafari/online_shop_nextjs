@@ -30,8 +30,8 @@ export const Navigation: FC = () => {
 
   return (
     <Fragment>
-      <nav className="bg-gray-900 border-gray-200">
-        <div className="max-w-7xl mx-auto px-2 lg:px-8 sm:px-6">
+      <nav className="w-full bg-gray-900 z-50">
+        <div className="max-w-full mx-auto px-4 sm:px-14">
           <div className="h-16 flex items-center justify-between relative">
             <div className="flex items-center justify-center">
               <Link href="/" className="flex flex-shrink-0 items-center">

@@ -10,8 +10,8 @@ import logo from "assets/img/logo.svg";
 
 export const FooterPages: FC = () => {
   return (
-    <div className="bg-gray-900">
-      <div className="w-full max-w-screen-xl mx-auto p-4 py-6 lg:py-8">
+    <div className="w-full bg-gray-900 absolute bottom-0 left-0 z-50">
+      <div className="w-full max-w-full mx-auto px-4 md:px-14 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <Link href="/" className="flex items-center">

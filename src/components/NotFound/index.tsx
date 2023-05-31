@@ -3,7 +3,7 @@ import { FC } from "react";
 
 export const NotFound: FC = () => {
   return (
-    <div className="w-full h-80 flex items-center justify-center my-20">
+    <div className="w-full h-full flex items-center justify-center absolute top-1/2 -translate-y-1/2 -z-10">
       <div className="bg-sky-600 text-white text-2xl font-semibold flex items-center justify-center rounded-xl py-5 px-8">
         <svg
           xmlns="http://www.w3.org/2000/svg"
