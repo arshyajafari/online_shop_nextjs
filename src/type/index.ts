@@ -26,3 +26,9 @@ export type ModalTypeProps = {
   show: boolean;
   onClose: () => void;
 };
+
+// toast type
+export type ReactToastTypeProps = {
+  type: string;
+  text: string;
+};
