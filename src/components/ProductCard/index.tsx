@@ -1,5 +1,5 @@
 // react hook
-import React, { Fragment, FC } from "react";
+import { Fragment, FC } from "react";
 
 // import redux package
 import { useDispatch } from "react-redux";

@@ -8,6 +8,9 @@ import Link from "next/link";
 // import axios
 import axios from "axios";
 
+// import helper file
+import { Toast } from "helper/toast";
+
 // import types
 import { UserInfoTypeProps, ModalTypeProps } from "type";
 
@@ -26,7 +29,13 @@ export const ProfileModal: FC<ModalTypeProps> = ({ show, onClose }) => {
       );
 
       setUserInfo(data);
-    } catch (error) {}
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return Toast({ type: "err", text: error.message });
+      } else {
+        return Toast({ type: "err", text: "An unexpected error occurred" });
+      }
+    }
   };
 
   useEffect(() => {
