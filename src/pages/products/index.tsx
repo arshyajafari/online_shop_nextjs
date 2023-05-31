@@ -13,6 +13,9 @@ import axios from "axios";
 // import types
 import { ProductsTypeProps } from "type";
 
+// import helper file
+import { Toast } from "helper/toast";
+
 const ProductsPage = () => {
   // products state
   const [products, setProducts] = useState<any>([]);
@@ -36,16 +39,23 @@ const ProductsPage = () => {
         "https://fakestoreapi.com/products"
       );
 
-      if (statusText === "OK") {
+      if (statusText !== "OK") {
+        setTimeout(() => setIsLoading(false), 3000);
+
+        return Toast({
+          type: "err",
+          text: "There was a problem in getting the products from API.",
+        });
+      } else {
         setTimeout(() => setIsLoading(false), 3000);
 
         setProducts(data);
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        return error.message;
+        return Toast({ type: "err", text: error.message });
       } else {
-        return "An unexpected error occurred";
+        return Toast({ type: "err", text: "An unexpected error occurred" });
       }
     }
   }, []);
@@ -60,9 +70,9 @@ const ProductsPage = () => {
       setCategoriesData(data);
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        return error.message;
+        return Toast({ type: "err", text: error.message });
       } else {
-        return "An unexpected error occurred";
+        return Toast({ type: "err", text: "An unexpected error occurred" });
       }
     }
   }, []);

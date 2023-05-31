@@ -10,9 +10,14 @@ import { getAllItemsInShoppingCart, getTotalPrice } from "reducer";
 // components
 import { Navigation } from "components/Navigation";
 import { ShoppingCart } from "components/ShoppingCart";
-import { FooterPages } from "components/FooterPages";
-import { useSelector } from "react-redux";
 import { NotFound } from "components/NotFound";
+import { FooterPages } from "components/FooterPages";
+
+// import redux package
+import { useSelector } from "react-redux";
+
+// import react toastify package
+import { Toast } from "helper/toast";
 
 // get static data
 const staticData = {
@@ -44,11 +49,28 @@ const ShoppingCartPage: FC = () => {
       value === staticDiscountCode
     ) {
       setCheckedCode("true");
+
+      return Toast({
+        type: "success",
+        text: "The discount was applied successfully.",
+      });
     } else if (
       value.replace(/\s/g, "").trim().length < 3 ||
       value !== staticDiscountCode
     ) {
       setCheckedCode("false");
+
+      return Toast({
+        type: "err",
+        text: "The code is not valid.",
+      });
+    } else if (value.replace(/\s/g, "").trim().length === 0) {
+      setCheckedCode("false");
+
+      return Toast({
+        type: "empty",
+        text: "Code not entered.",
+      });
     } else {
       setCheckedCode("");
     }
@@ -61,8 +83,6 @@ const ShoppingCartPage: FC = () => {
   return (
     <Fragment>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
         <title>Cart</title>
       </Head>
 
