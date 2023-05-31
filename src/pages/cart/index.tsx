@@ -44,6 +44,12 @@ const ShoppingCartPage: FC = () => {
 
     const value = discountData.current.value;
 
+    if (products.length < 1) {
+      setCheckedCode("");
+
+      discountData.current.value = "";
+    }
+
     if (
       value.replace(/\s/g, "").trim().length >= 3 &&
       value === staticDiscountCode
@@ -117,7 +123,7 @@ const ShoppingCartPage: FC = () => {
               </div>
             </div>
 
-            <div className="w-full md:w-1/3 sm:w-1/2 my-4 mx-auto px-6">
+            <div className="w-full md:w-1/3 sm:w-1/2 mx-auto px-6 pb-44">
               <form method="post" onSubmit={(e) => discountCodeHandler(e)}>
                 <input
                   type="text"

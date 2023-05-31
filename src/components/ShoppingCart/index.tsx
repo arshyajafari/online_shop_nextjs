@@ -36,13 +36,13 @@ export const ShoppingCart: FC<ProductItemsTypeProps> = ({ items }) => {
     <Fragment>
       <ul className="max-w-4xl border-b border-gray-200 list-none mx-auto py-0 sm:py-8 px-0">
         <li className="flex flex-col sm:flex-row py-6 px-4">
-          <div className="m-auto sm:m-0">
+          <div className="w-40 h-40 m-auto sm:m-0">
             <Image
               src={items.image}
               alt={items.title}
-              width={180}
-              height={100}
-              className="bg-gray-200 rounded-md"
+              width={500}
+              height={500}
+              className="w-full h-full bg-white rounded-md object-contain"
             />
           </div>
 
